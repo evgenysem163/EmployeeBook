@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -19,11 +18,7 @@ public class EmployeeBook {
         employees.put(getKey(employee), employee);
     }
 
-    public void addEmployee(String name,
-                            String surname,
-                            String patronymicName,
-                            double salary,
-                            int department) {
+    public void addEmployee(String name, String surname, String patronymicName, double salary, int department) {
         addEmployee(new Employee(name, surname, patronymicName, salary, department));
     }
 
@@ -41,42 +36,38 @@ public class EmployeeBook {
             }
         }
     }
+
     public void changeSalary(Employee employee, double newSalary) {
         String key = getKey(employee);
         if (employees.containsKey(key)) {
             employees.get(key).setSalary(newSalary);
         }
     }
+
     public void changeDepartment(Employee employee, int newDepartment) {
         String key = getKey(employee);
         if (employees.containsKey(key)) {
             employees.get(key).setDepartment(newDepartment);
         }
     }
+
     public void printEmployeesByDepartment() {
         // по условию отделы от 1 до 5
         for (int department = 1; department <= 5; department++) {
             System.out.println("Сотрудники из отдела " + department + ":");
             for (Employee employee : employees.values()) {
                 if (Objects.nonNull(employee) && employee.getDepartment() == department) {
-                    System.out.println(employee.getSurname() + " " + employee.getName() + " "
-                            + employee.getPatronymicName());
+                    System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymicName());
                 }
             }
         }
     }
+
     public void printEmployeesWithSalaryLessThan(double bound) {
         System.out.println("Сотрудники с ЗП меньшей, чем " + bound + ":");
         for (Employee employee : employees.values()) {
             if (Objects.nonNull(employee) && employee.getSalary() < bound) {
-                System.out.printf(
-                        "id: %d, ФИО: %s %s %s, ЗП: %.2f%n",
-                        employee.getId(),
-                        employee.getSurname(),
-                        employee.getName(),
-                        employee.getPatronymicName(),
-                        employee.getSalary()
-                );
+                System.out.printf("id: %d, ФИО: %s %s %s, ЗП: %.2f%n", employee.getId(), employee.getSurname(), employee.getName(), employee.getPatronymicName(), employee.getSalary());
             }
         }
     }
@@ -85,14 +76,7 @@ public class EmployeeBook {
         System.out.println("Сотрудники с ЗП большей или равной, чем " + bound + ":");
         for (Employee employee : employees.values()) {
             if (Objects.nonNull(employee) && employee.getSalary() >= bound) {
-                System.out.printf(
-                        "id: %d, ФИО: %s %s %s, ЗП: %.2f%n",
-                        employee.getId(),
-                        employee.getSurname(),
-                        employee.getName(),
-                        employee.getPatronymicName(),
-                        employee.getSalary()
-                );
+                System.out.printf("id: %d, ФИО: %s %s %s, ЗП: %.2f%n", employee.getId(), employee.getSurname(), employee.getName(), employee.getPatronymicName(), employee.getSalary());
             }
         }
     }
@@ -143,14 +127,14 @@ public class EmployeeBook {
         String key = null;
         for (Map.Entry<String, Employee> entry : employees.entrySet()) {
             Employee employee = entry.getValue();
-            if (Objects.nonNull(employee) && employee.getDepartment() == department
-                    && employee.getSalary() < minSalary) {
+            if (Objects.nonNull(employee) && employee.getDepartment() == department && employee.getSalary() < minSalary) {
                 minSalary = employee.getSalary();
                 key = entry.getKey();
             }
         }
         return key != null ? employees.get(key) : null;
     }
+
     public Employee findEmployeeWithMinSalary() {
         double minSalary = Double.MAX_VALUE;
         String key = null;
@@ -169,8 +153,7 @@ public class EmployeeBook {
         String key = null;
         for (Map.Entry<String, Employee> entry : employees.entrySet()) {
             Employee employee = entry.getValue();
-            if (Objects.nonNull(employee) && employee.getDepartment() == department
-                    && employee.getSalary() > maxSalary) {
+            if (Objects.nonNull(employee) && employee.getDepartment() == department && employee.getSalary() > maxSalary) {
                 maxSalary = employee.getSalary();
                 key = entry.getKey();
             }
@@ -210,11 +193,11 @@ public class EmployeeBook {
         }
         return sum;
     }
+
     public void printFullNameEmployees() {
         for (Employee employee : employees.values()) {
             if (Objects.nonNull(employee)) {
-                System.out.println(
-                        employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymicName());
+                System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymicName());
             }
         }
     }
@@ -226,17 +209,11 @@ public class EmployeeBook {
             }
         }
     }
+
     public void printAllEmployeesFromDepartment(int department) {
         for (Employee employee : employees.values()) {
             if (Objects.nonNull(employee) && employee.getDepartment() == department) {
-                System.out.printf(
-                        "id: %d, ФИО: %s %s %s, ЗП: %.2f%n",
-                        employee.getId(),
-                        employee.getSurname(),
-                        employee.getName(),
-                        employee.getPatronymicName(),
-                        employee.getSalary()
-                );
+                System.out.printf("id: %d, ФИО: %s %s %s, ЗП: %.2f%n", employee.getId(), employee.getSurname(), employee.getName(), employee.getPatronymicName(), employee.getSalary());
             }
         }
     }
