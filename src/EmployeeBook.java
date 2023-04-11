@@ -201,7 +201,6 @@ public class EmployeeBook {
             }
         }
     }
-
     public void printAllEmployees() {
         for (Employee employee : employees.values()) {
             if (Objects.nonNull(employee)) {

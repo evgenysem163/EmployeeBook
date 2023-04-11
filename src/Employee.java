@@ -48,7 +48,6 @@ public class Employee {
     public int getId() {
         return id;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -60,7 +59,6 @@ public class Employee {
         Employee employee = (Employee) o;
         return name.equals(employee.name) && surname.equals(employee.surname) && patronymicName.equals(employee.patronymicName);
     }
-
     @Override
     public String toString() {
         return String.format(
